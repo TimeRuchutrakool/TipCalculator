@@ -28,6 +28,13 @@
 		F497E7C629F28F170049017B /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7C529F28F170049017B /* ThemeColor.swift */; };
 		F497E7C829F28F1D0049017B /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7C729F28F1D0049017B /* ThemeFont.swift */; };
 		F497E7CB29F28F530049017B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7CA29F28F530049017B /* UIColor+Extension.swift */; };
+		F497E7CE29F2C6000049017B /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7CD29F2C6000049017B /* LabelFactory.swift */; };
+		F497E7D029F2CE0B0049017B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7CF29F2CE0B0049017B /* UIView+Extension.swift */; };
+		F497E7D229F2D3160049017B /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7D129F2D3160049017B /* AmountView.swift */; };
+		F497E7D529F2E02F0049017B /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7D429F2E02F0049017B /* Tip.swift */; };
+		F497E7D729F2E0730049017B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7D629F2E0730049017B /* HeaderView.swift */; };
+		F497E7DA29F2E7600049017B /* CalculatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7D929F2E7600049017B /* CalculatorVM.swift */; };
+		F497E7DC29F2E8EA0049017B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7DB29F2E8EA0049017B /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +75,13 @@
 		F497E7C529F28F170049017B /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		F497E7C729F28F1D0049017B /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
 		F497E7CA29F28F530049017B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		F497E7CD29F2C6000049017B /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		F497E7CF29F2CE0B0049017B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F497E7D129F2D3160049017B /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
+		F497E7D429F2E02F0049017B /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		F497E7D629F2E0730049017B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		F497E7D929F2E7600049017B /* CalculatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorVM.swift; sourceTree = "<group>"; };
+		F497E7DB29F2E8EA0049017B /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				F497E7C329F28A5A0049017B /* App */,
+				F497E7D329F2E0270049017B /* model */,
 				F497E7B829F2896E0049017B /* view */,
-				F475078929F287BB00AFF4A7 /* CalculatorVC.swift */,
+				F497E7D829F2E74F0049017B /* viewModel */,
+				F497E7CC29F2C5F40049017B /* factory */,
 				F497E7C429F28F080049017B /* config */,
 				F497E7C929F28F420049017B /* Extension */,
 				F475078E29F287BC00AFF4A7 /* Assets.xcassets */,
@@ -163,8 +179,11 @@
 		F497E7B829F2896E0049017B /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F475078929F287BB00AFF4A7 /* CalculatorVC.swift */,
 				F497E7B929F289770049017B /* LogoView.swift */,
 				F497E7BB29F28A170049017B /* ResultView.swift */,
+				F497E7D129F2D3160049017B /* AmountView.swift */,
+				F497E7D629F2E0730049017B /* HeaderView.swift */,
 				F497E7BD29F28A200049017B /* BillingInputView.swift */,
 				F497E7BF29F28A280049017B /* TipInputView.swift */,
 				F497E7C129F28A300049017B /* SplitInputView.swift */,
@@ -194,8 +213,34 @@
 			isa = PBXGroup;
 			children = (
 				F497E7CA29F28F530049017B /* UIColor+Extension.swift */,
+				F497E7CF29F2CE0B0049017B /* UIView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F497E7CC29F2C5F40049017B /* factory */ = {
+			isa = PBXGroup;
+			children = (
+				F497E7CD29F2C6000049017B /* LabelFactory.swift */,
+			);
+			path = factory;
+			sourceTree = "<group>";
+		};
+		F497E7D329F2E0270049017B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F497E7D429F2E02F0049017B /* Tip.swift */,
+				F497E7DB29F2E8EA0049017B /* Result.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F497E7D829F2E74F0049017B /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F497E7D929F2E7600049017B /* CalculatorVM.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +389,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F497E7DC29F2E8EA0049017B /* Result.swift in Sources */,
+				F497E7D229F2D3160049017B /* AmountView.swift in Sources */,
 				F475078A29F287BB00AFF4A7 /* CalculatorVC.swift in Sources */,
+				F497E7D029F2CE0B0049017B /* UIView+Extension.swift in Sources */,
 				F497E7BA29F289770049017B /* LogoView.swift in Sources */,
 				F497E7C629F28F170049017B /* ThemeColor.swift in Sources */,
 				F497E7CB29F28F530049017B /* UIColor+Extension.swift in Sources */,
@@ -353,8 +401,12 @@
 				F475078829F287BB00AFF4A7 /* SceneDelegate.swift in Sources */,
 				F497E7C829F28F1D0049017B /* ThemeFont.swift in Sources */,
 				F497E7BE29F28A200049017B /* BillingInputView.swift in Sources */,
+				F497E7CE29F2C6000049017B /* LabelFactory.swift in Sources */,
+				F497E7DA29F2E7600049017B /* CalculatorVM.swift in Sources */,
+				F497E7D529F2E02F0049017B /* Tip.swift in Sources */,
 				F497E7C229F28A300049017B /* SplitInputView.swift in Sources */,
 				F497E7C029F28A280049017B /* TipInputView.swift in Sources */,
+				F497E7D729F2E0730049017B /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
