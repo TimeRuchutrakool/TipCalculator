@@ -52,6 +52,20 @@ class BillingInputView: UIView{
     init(){
         super.init(frame: .zero)
         layout()
+        observe()
+    }
+    
+    //passthrough can accept and emit
+    private var billSubject: PassthroughSubject<Double,Never> = .init() //send text in textfield to vm //ObserveObject for other class
+    private var cancellable = Set<AnyCancellable>()
+    var valuePublisher: AnyPublisher<Double,Never>{ //AnyPublisher can only emit
+        return billSubject.eraseToAnyPublisher()
+    }
+    
+    private func observe(){
+        textField.textPublisher.sink { text in
+            self.billSubject.send(text?.doubleValue ?? 0)
+        }.store(in: &cancellable)
     }
     
     

@@ -38,14 +38,19 @@ class CalculatorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         view.backgroundColor = ThemeColor.bg
         layout()
         bind()
     }
     
     private func bind(){
-        let input = CalculatorVM.Input(billPublisher: Just(10).eraseToAnyPublisher(), tipPublisher: Just(Tip.tenPercent).eraseToAnyPublisher(), splitPublisher: Just(5).eraseToAnyPublisher())
+        
+        let input = CalculatorVM.Input(
+            billPublisher: billingInputView.valuePublisher,
+            tipPublisher: tipInputView.valuePublisher,
+            splitPublisher: Just(5).eraseToAnyPublisher()
+        )
         
         let output = vm.transform(input: input)
         output.updateViewPublisher.sink { result in
