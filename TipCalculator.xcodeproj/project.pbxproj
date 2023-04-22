@@ -38,6 +38,9 @@
 		F497E7DE29F2EF960049017B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7DD29F2EF960049017B /* String+Extension.swift */; };
 		F497E7E029F42D1E0049017B /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7DF29F42D1E0049017B /* UIResponder+Extension.swift */; };
 		F497E7E229F4349F0049017B /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7E129F4349F0049017B /* Int+Extension.swift */; };
+		F497E7E429F43BDF0049017B /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7E329F43BDF0049017B /* Double+Extension.swift */; };
+		F497E7E629F443A00049017B /* fart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F497E7E529F443A00049017B /* fart.mp3 */; };
+		F497E7E929F443B90049017B /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E7E829F443B90049017B /* AudioPlayerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		F497E7DD29F2EF960049017B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F497E7DF29F42D1E0049017B /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		F497E7E129F4349F0049017B /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		F497E7E329F43BDF0049017B /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		F497E7E529F443A00049017B /* fart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart.mp3; sourceTree = "<group>"; };
+		F497E7E829F443B90049017B /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		F475078429F287BB00AFF4A7 /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				F497E7E729F443AC0049017B /* Service */,
 				F497E7C329F28A5A0049017B /* App */,
 				F497E7D329F2E0270049017B /* model */,
 				F497E7B829F2896E0049017B /* view */,
@@ -152,6 +159,7 @@
 				F497E7C429F28F080049017B /* config */,
 				F497E7C929F28F420049017B /* Extension */,
 				F475078E29F287BC00AFF4A7 /* Assets.xcassets */,
+				F497E7E529F443A00049017B /* fart.mp3 */,
 				F475079029F287BC00AFF4A7 /* LaunchScreen.storyboard */,
 				F475079329F287BC00AFF4A7 /* Info.plist */,
 			);
@@ -223,6 +231,7 @@
 				F497E7DD29F2EF960049017B /* String+Extension.swift */,
 				F497E7DF29F42D1E0049017B /* UIResponder+Extension.swift */,
 				F497E7E129F4349F0049017B /* Int+Extension.swift */,
+				F497E7E329F43BDF0049017B /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -250,6 +259,14 @@
 				F497E7D929F2E7600049017B /* CalculatorVM.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F497E7E729F443AC0049017B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F497E7E829F443B90049017B /* AudioPlayerService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +391,7 @@
 			files = (
 				F475079229F287BC00AFF4A7 /* LaunchScreen.storyboard in Resources */,
 				F475078F29F287BC00AFF4A7 /* Assets.xcassets in Resources */,
+				F497E7E629F443A00049017B /* fart.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,10 +428,12 @@
 				F497E7CB29F28F530049017B /* UIColor+Extension.swift in Sources */,
 				F497E7BC29F28A170049017B /* ResultView.swift in Sources */,
 				F475078629F287BB00AFF4A7 /* AppDelegate.swift in Sources */,
+				F497E7E929F443B90049017B /* AudioPlayerService.swift in Sources */,
 				F475078829F287BB00AFF4A7 /* SceneDelegate.swift in Sources */,
 				F497E7C829F28F1D0049017B /* ThemeFont.swift in Sources */,
 				F497E7BE29F28A200049017B /* BillingInputView.swift in Sources */,
 				F497E7CE29F2C6000049017B /* LabelFactory.swift in Sources */,
+				F497E7E429F43BDF0049017B /* Double+Extension.swift in Sources */,
 				F497E7DA29F2E7600049017B /* CalculatorVM.swift in Sources */,
 				F497E7D529F2E02F0049017B /* Tip.swift in Sources */,
 				F497E7C229F28A300049017B /* SplitInputView.swift in Sources */,

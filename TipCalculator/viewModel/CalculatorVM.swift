@@ -14,12 +14,19 @@ class CalculatorVM{
         let billPublisher: AnyPublisher<Double,Never>
         let tipPublisher: AnyPublisher<Tip,Never>
         let splitPublisher: AnyPublisher<Int,Never>
+        let logoViewTapPublisher: AnyPublisher<Void,Never>
     }
     
     struct Output{
         let updateViewPublisher: AnyPublisher<Result,Never>
+        let resultCalculatorPublisher: AnyPublisher<Void,Never>
     }
     
+    // dependencies injection
+    private let audioPlayerServices: AudioPlayerService
+    init(audioPlayerServices: AudioPlayerService = DefaultAudioPlayer()){
+        self.audioPlayerServices = audioPlayerServices
+    }
     
     private var cancellable = Set<AnyCancellable>()
     //Binding
@@ -35,9 +42,9 @@ class CalculatorVM{
                 return Just(result)
             }.eraseToAnyPublisher()
         
+        let resultCalculatorPublisher = input.logoViewTapPublisher
         
-        
-        return Output(updateViewPublisher: updateViewPublisher)
+        return Output(updateViewPublisher: updateViewPublisher, resultCalculatorPublisher: resultCalculatorPublisher)
     }
  
     func getTipAmount(bill:Double,tip:Tip) -> Double{

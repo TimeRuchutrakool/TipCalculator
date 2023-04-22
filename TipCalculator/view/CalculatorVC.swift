@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import CombineCocoa
 
 class CalculatorVC: UIViewController {
     
@@ -42,20 +43,53 @@ class CalculatorVC: UIViewController {
         view.backgroundColor = ThemeColor.bg
         layout()
         bind()
+        observe()
     }
+    
+    private func observe(){
+        viewTapPublisher.sink { _ in
+            self.view.endEditing(true)
+        }.store(in: &cancellable)
+        
+        logoViewTapPublisher.sink { _ in
+            
+        }.store(in: &cancellable)
+    }
+    
+    private lazy var viewTapPublisher: AnyPublisher<Void,Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
+    
+    private lazy var logoViewTapPublisher: AnyPublisher<Void,Never> = {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tapGesture)
+        return tapGesture.tapPublisher.flatMap { _ in
+            Just(())
+        }.eraseToAnyPublisher()
+    }()
     
     private func bind(){
         
         let input = CalculatorVM.Input(
             billPublisher: billingInputView.valuePublisher,
             tipPublisher: tipInputView.valuePublisher,
-            splitPublisher: splitInputView.valuePublisher
+            splitPublisher: splitInputView.valuePublisher,
+            logoViewTapPublisher: logoViewTapPublisher
         )
         
         let output = vm.transform(input: input)
        
         output.updateViewPublisher.sink { result in
-            print("\(result)")
+            self.resultView.configure(result: result)
+        }.store(in: &cancellable)
+        
+        output.resultCalculatorPublisher.sink { _ in
+            print("reset")
         }.store(in: &cancellable)
     }
     
