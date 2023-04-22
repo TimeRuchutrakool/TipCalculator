@@ -19,7 +19,7 @@ class CalculatorVM{
     
     struct Output{
         let updateViewPublisher: AnyPublisher<Result,Never>
-        let resultCalculatorPublisher: AnyPublisher<Void,Never>
+        let resetCalculatorPublisher: AnyPublisher<Void,Never>
     }
     
     // dependencies injection
@@ -42,9 +42,13 @@ class CalculatorVM{
                 return Just(result)
             }.eraseToAnyPublisher()
         
-        let resultCalculatorPublisher = input.logoViewTapPublisher
+        let resultCalculatorPublisher = input.logoViewTapPublisher.handleEvents (receiveOutput: { _ in
+            self.audioPlayerServices.playSound()
+        }).flatMap { _ in
+            return Just(())
+        }.eraseToAnyPublisher()
         
-        return Output(updateViewPublisher: updateViewPublisher, resultCalculatorPublisher: resultCalculatorPublisher)
+        return Output(updateViewPublisher: updateViewPublisher, resetCalculatorPublisher: resultCalculatorPublisher)
     }
  
     func getTipAmount(bill:Double,tip:Tip) -> Double{

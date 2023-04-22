@@ -181,6 +181,10 @@ class TipInputView: UIView{
         customTipButton.setAttributedTitle(text, for: .normal)
     }
     
+    func reset(){
+        tipSubject.send(.none)
+    }
+    
 }
 
 

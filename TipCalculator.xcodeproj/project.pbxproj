@@ -150,8 +150,8 @@
 		F475078429F287BB00AFF4A7 /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				F497E7E729F443AC0049017B /* Service */,
 				F497E7C329F28A5A0049017B /* App */,
+				F497E7E729F443AC0049017B /* Service */,
 				F497E7D329F2E0270049017B /* model */,
 				F497E7B829F2896E0049017B /* view */,
 				F497E7D829F2E74F0049017B /* viewModel */,

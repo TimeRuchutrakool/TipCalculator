@@ -105,4 +105,9 @@ class BillingInputView: UIView{
         textField.endEditing(true)
     }
     
+    func reset(){
+        textField.text = nil
+        billSubject.send(0)
+    }
+    
 }

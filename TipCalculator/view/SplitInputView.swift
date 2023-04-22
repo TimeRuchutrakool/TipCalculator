@@ -104,5 +104,8 @@ class SplitInputView: UIView{
         }.store(in: &cancellable)
     }
     
+    func reset(){
+        splitSubject.send(1)
+    }
 }
 
