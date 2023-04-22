@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class SplitInputView: UIView{
     
@@ -17,13 +19,19 @@ class SplitInputView: UIView{
     
     private lazy var decrementButton: UIButton = {
         let button = buildButton(text:"-", corners: [.layerMinXMaxYCorner,.layerMinXMinYCorner])
-       
+        button.tapPublisher.flatMap { _ in
+            Just(self.splitSubject.value == 1 ? 1 : self.splitSubject.value - 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
         return button
     }()
     
     private lazy var incrementButton: UIButton = {
         let button = buildButton(text:"+", corners: [.layerMaxXMinYCorner,.layerMaxXMaxYCorner])
-       
+        button.tapPublisher.flatMap { _ in
+            Just(self.splitSubject.value + 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
         return button
     }()
     
@@ -43,10 +51,16 @@ class SplitInputView: UIView{
         stackView.spacing = 0
         return stackView
     }()
+    private var cancellable = Set<AnyCancellable>()
+    private lazy var splitSubject: CurrentValueSubject<Int,Never> = .init(1)
+    var valuePublisher: AnyPublisher<Int,Never>{
+        return splitSubject.removeDuplicates().eraseToAnyPublisher()
+    }
     
     init(){
         super.init(frame: .zero)
         layout()
+        observe()
     }
     
     required init?(coder: NSCoder) {
@@ -82,6 +96,12 @@ class SplitInputView: UIView{
         button.backgroundColor = ThemeColor.primary
         button.addRoundedCorners(corners: corners, radius: 8)
         return button
+    }
+    
+    private func observe(){
+        splitSubject.sink { value in
+            self.quantityLabel.text = value.stringValue
+        }.store(in: &cancellable)
     }
     
 }
