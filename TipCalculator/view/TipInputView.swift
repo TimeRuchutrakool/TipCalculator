@@ -23,6 +23,9 @@ class TipInputView: UIView{
             Just(Tip.tenPercent)
         }).assign(to: \.value, on: tipSubject) //pass value every time got tapped
             .store(in: &cancellable)
+        
+        button.accessibilityIdentifier = ScreenIdentifier.TipInputView.tenPercentsButton.rawValue
+        
         return button
     }()
     
@@ -31,6 +34,9 @@ class TipInputView: UIView{
         button.tapPublisher.flatMap({ Just(Tip.fifteenPercent) })
             .assign(to: \.value, on: tipSubject)
             .store(in: &cancellable)
+        
+        button.accessibilityIdentifier = ScreenIdentifier.TipInputView.fifteenPercentsButton.rawValue
+        
         return button
     }()
     
@@ -39,6 +45,7 @@ class TipInputView: UIView{
         button.tapPublisher.flatMap({Just(Tip.twentyPercent)})
             .assign(to: \.value, on: tipSubject)
             .store(in: &cancellable)
+        button.accessibilityIdentifier = ScreenIdentifier.TipInputView.twentyPercentsButton.rawValue
         return button
     }()
     
@@ -52,6 +59,9 @@ class TipInputView: UIView{
         button.tapPublisher.sink { _ in
             self.handleCustomTipButton()
         }.store(in: &cancellable)
+        
+        button.accessibilityIdentifier = ScreenIdentifier.TipInputView.customTipButton.rawValue
+        
         return button
     }()
     
@@ -121,6 +131,8 @@ class TipInputView: UIView{
                 textField.placeholder = "Enter desired tip"
                 textField.keyboardType = .numberPad
                 textField.autocorrectionType = .no
+                
+                textField.accessibilityIdentifier = ScreenIdentifier.TipInputView.customTipAlertTextField.rawValue
             }
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
             let confirmButton = UIAlertAction(title: "Confirm", style: .default){ _ in

@@ -23,6 +23,9 @@ class SplitInputView: UIView{
             Just(self.splitSubject.value == 1 ? 1 : self.splitSubject.value - 1)
         }.assign(to: \.value, on: splitSubject)
             .store(in: &cancellable)
+        
+        button.accessibilityIdentifier = ScreenIdentifier.SplitInputView.decrementButton.rawValue
+        
         return button
     }()
     
@@ -32,11 +35,16 @@ class SplitInputView: UIView{
             Just(self.splitSubject.value + 1)
         }.assign(to: \.value, on: splitSubject)
             .store(in: &cancellable)
+        
+        button.accessibilityIdentifier = ScreenIdentifier.SplitInputView.incrementButton.rawValue
+        
         return button
     }()
     
     private lazy var quantityLabel: UILabel = {
         let label = LabelFactory.build(text: "1", font: ThemeFont.bold(ofSize: 20))
+        
+        label.accessibilityIdentifier = ScreenIdentifier.SplitInputView.quantityValueLabel.rawValue
         
         return label
     }()

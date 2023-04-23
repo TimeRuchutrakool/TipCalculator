@@ -46,6 +46,8 @@ class BillingInputView: UIView{
         toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),doneButton]
         textField.inputAccessoryView = toolBar
         
+        textField.accessibilityIdentifier = ScreenIdentifier.BillInputView.textField.rawValue
+        
         return textField
     }()
     
